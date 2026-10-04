@@ -37,7 +37,7 @@ The project can also be opened and built directly using CLion.
 
 ## Acknowledgments
 
-The initial project structure and Catch2 testing setup were based on the Catch2 template provided for the course by Professor [Professor Name].
+The initial project structure and Catch2 testing setup were based on the Catch2 template provided for the course by Professor Amanpreet Kapoor. The Catch2 testing setup was provided by contributors https://github.com/Herschenglime https://github.com/amay-patel https://github.com/Brian-Magnuson
 
 The AVL tree implementation and project-specific tests were developed by me.
 
