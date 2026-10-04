@@ -1,8 +1,8 @@
-##AVL Tree
+## AVL Tree
 
 A C++ implementation of a self-balancing AVL binary search tree. The project supports insertion, deletion, and search operations while maintaining AVL balance through tree rotations.
 
-##Features
+## Features
 
 - Binary search tree insertion
 
@@ -16,15 +16,15 @@ A C++ implementation of a self-balancing AVL binary search tree. The project sup
 
 - Catch2 unit testing
 
-##Complexity
+## Complexity
 
 AVL trees maintain a height of O(log n), resulting in O(log n) time complexity for search, insertion, and deletion operations.
 
-##Testing
+## Testing
 
 The project uses Catch2 for unit testing. Tests cover core tree operations, balancing, rotations, and edge cases involving insertion and deletion.
 
-##Building
+## Building
 
 This project uses CMake. From the project directory:
 
@@ -35,7 +35,7 @@ cmake --build .
 
 The project can also be opened and built directly using CLion.
 
-##Acknowledgments
+## Acknowledgments
 
 The initial project structure and Catch2 testing setup were based on the Catch2 template provided for the course by Professor [Professor Name].
 
