@@ -27,16 +27,16 @@ int main()
             unsigned int const endName = line.find('"', beginName + 1);
             string const name = line.substr(beginName + 1, endName - beginName - 1);
 
-            string id = line.substr(endName + 1, line.size() - endName - 1);
+            string id = line.substr(endName + 2, line.size() - endName - 1);
 
-            cout << tree.insert(name, stoi(id)) << endl;
+            cout << tree.insert(name, id) << endl;
         }
 
         else if (command == "remove")
         {
             string id = line.substr(commandSpace + 1);
 
-            cout << tree.removeByID(stoi(id)) << endl;
+            cout << tree.removeByID(id) << endl;
         }
 
         else if (command == "search")
@@ -54,7 +54,7 @@ int main()
             else
             {
                 string id = line.substr(commandSpace + 1);
-                cout << tree.searchByID(stoi(id)) << endl;
+                cout << tree.searchByID(id) << endl;
             }
         }
 

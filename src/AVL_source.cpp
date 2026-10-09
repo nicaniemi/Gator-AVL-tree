@@ -1,3 +1,4 @@
+#include <iostream>
 #include <queue>
 #include <vector>
 #include <regex>
@@ -67,7 +68,7 @@ AVL::TreeNode* AVL::rotateRight(TreeNode* helpRoot) // Rotate right if the tree 
 
 // Define insert + helper method
 
-AVL::TreeNode* AVL::helperInsert(TreeNode* helpRoot, const string &name, int const id) // BST Insert function, code from Module 4 Balanced Trees ppt
+AVL::TreeNode* AVL::helperInsert(TreeNode* helpRoot, const string &name, const string &id) // BST Insert function, code from Module 4 Balanced Trees ppt
                                           // "helpRoot" is the current name, and "key" is the GatorID number
 {
     if (helpRoot == nullptr) // Create a tree if no nodes inserted
@@ -119,15 +120,12 @@ AVL::TreeNode* AVL::helperInsert(TreeNode* helpRoot, const string &name, int con
     return helpRoot;
 }
 
-string AVL::insert(const string &name, int const id) // Insert a student into the tree + regex checks to ensure name meets criteria
+string AVL::insert(const string &name, const string &id) // Insert a student into the tree + regex checks to ensure name meets criteria
 {
-
     if (!regex_match(name, regex("^[A-Za-z ]+$"))) // Ensure valid name
         return "unsuccessful";
 
-    string const idString = to_string(id);
-
-    if (!regex_match(idString, regex("^[0-9]{8}$"))) // Copilot helped me write this, I was unsure how to regex check for the ID
+    if (!regex_match(id, regex("^[0-9]{8}$"))) // Copilot helped me write this, I was unsure how to regex check for the ID
         return "unsuccessful";
 
     if (helperSearchByID(this->root, id))
@@ -179,7 +177,7 @@ unsigned int AVL::printLevelCount() const // Print the # of levels in the tree
 
 // Define in order traversal + helper method and a method to own the result vector
 
-void AVL::helperInOrder(const AVL::TreeNode* helpRoot, std::vector<int>& result) // Create the in order vector for the tree
+void AVL::helperInOrder(const AVL::TreeNode* helpRoot, std::vector<string>& result) // Create the in order vector for the tree
 {
     if (helpRoot == nullptr)
         return;
@@ -191,19 +189,19 @@ void AVL::helperInOrder(const AVL::TreeNode* helpRoot, std::vector<int>& result)
     }
 }
 
-std::vector<int> AVL::inOrder() const // Return an in order vector of the tree, Copilot helped me decide how to structure the in order functions, mainly defining the vector separately
+std::vector<string> AVL::inOrder() const // Return an in order vector of the tree, Copilot helped me decide how to structure the in order functions, mainly defining the vector separately
 {
-    std::vector<int> result;
+    std::vector<string> result;
     helperInOrder(this->root, result);
     return result;
 }
 
 string AVL::printInOrder() const // Print the tree in order
 {
-    std::vector<int> const vals = inOrder();
+    std::vector<string> const vals = inOrder();
     string result;
 
-    for (const int v : vals)
+    for (const string &v : vals)
         result += searchByID(v) + ", ";
 
     if (!result.empty())
@@ -217,7 +215,7 @@ string AVL::printInOrder() const // Print the tree in order
 
 // Define pre order traversal + helper method and method to own result vector
 
-void AVL::helperPreOrder(const AVL::TreeNode* helpRoot, std::vector<int>& result) // Push the pre order traversal into result
+void AVL::helperPreOrder(const AVL::TreeNode* helpRoot, std::vector<string>& result) // Push the pre order traversal into result
 {
     if (helpRoot == nullptr)
         return;
@@ -229,19 +227,19 @@ void AVL::helperPreOrder(const AVL::TreeNode* helpRoot, std::vector<int>& result
     }
 }
 
-std::vector<int> AVL::preOrder() const // Owns the result vector for pre order traversal
+std::vector<string> AVL::preOrder() const // Owns the result vector for pre order traversal
 {
-    std::vector<int> result;
+    std::vector<string> result;
     helperPreOrder(this->root, result);
     return result;
 }
 
 string AVL::printPreOrder() const // Return the result vector as a concatenated string of ints
 {
-    std::vector<int> const vals = preOrder();
+    std::vector<string> const vals = preOrder();
     string result;
 
-    for (const int v : vals)
+    for (const string &v : vals)
         result += searchByID(v) + ", ";
 
     if (!result.empty())
@@ -255,7 +253,7 @@ string AVL::printPreOrder() const // Return the result vector as a concatenated 
 
 // Define post order traversal + helper and method to own result vector
 
-void AVL::helperPostOrder(const AVL::TreeNode* helpRoot, std::vector<int>& result) // Push the post order traversal into result
+void AVL::helperPostOrder(const AVL::TreeNode* helpRoot, std::vector<string>& result) // Push the post order traversal into result
 {
     if (helpRoot == nullptr)
         return;
@@ -267,19 +265,19 @@ void AVL::helperPostOrder(const AVL::TreeNode* helpRoot, std::vector<int>& resul
     }
 }
 
-std::vector<int> AVL::postOrder() const // Owns result vector for post order
+std::vector<string> AVL::postOrder() const // Owns result vector for post order
 {
-    std::vector<int> result;
+    std::vector<string> result;
     helperPostOrder(this->root, result);
     return result;
 }
 
 string AVL::printPostOrder() const // Return the post order traversal as a concatenated string
 {
-    std::vector<int> const vals = postOrder();
+    std::vector<string> const vals = postOrder();
     string result;
 
-    for (const int v : vals)
+    for (const string &v : vals)
         result += searchByID(v) + ", ";
 
     if (!result.empty())
@@ -293,7 +291,7 @@ string AVL::printPostOrder() const // Return the post order traversal as a conca
 
 // Implement search by ID + helper
 
-bool AVL::helperSearchByID(const TreeNode* helpRoot, int const id) // Iterate through the tree to find the ID, return false if not found, don't execute searchByID()
+bool AVL::helperSearchByID(const TreeNode* helpRoot, const string &id) // Iterate through the tree to find the ID, return false if not found, don't execute searchByID()
 {
     if (helpRoot == nullptr)
         return false;
@@ -307,7 +305,7 @@ bool AVL::helperSearchByID(const TreeNode* helpRoot, int const id) // Iterate th
     return false;
 }
 
-string AVL::searchByID(const int id) const // Iterate through the tree and retrieve the name associated with the found ID, return unsuccessful if ID not found
+string AVL::searchByID(const string &id) const // Iterate through the tree and retrieve the name associated with the found ID, return unsuccessful if ID not found
 {
     TreeNode* current = root;
 
@@ -324,7 +322,7 @@ string AVL::searchByID(const int id) const // Iterate through the tree and retri
 }
 
 // Implement search by name and helper
-bool AVL::helperSearchByName(const TreeNode* helpRoot, const string& name) // Iterate through tree to find name, return false if not found, don't execute searchByName()
+bool AVL::helperSearchByName(const TreeNode* helpRoot, const string &name) // Iterate through tree to find name, return false if not found, don't execute searchByName()
 {
     if (helpRoot == nullptr)
         return false;
@@ -340,15 +338,15 @@ bool AVL::helperSearchByName(const TreeNode* helpRoot, const string& name) // It
 
 string AVL::searchByName(const string &name) const // Check all nodes in the tree and return all of the IDs associated with "name"
 {
-    std::vector<int> const IDs = preOrder();
+    std::vector<string> const IDs = preOrder();
     string result;
     bool found = false;
-    for (const int v : IDs)
+    for (const string &v : IDs)
     {
         string currentName = searchByID(v);
         if (currentName == name)
         {
-            result += (to_string(v)) + "\n";
+            result += v + "\n";
             found = true;
         }
     }
@@ -362,7 +360,7 @@ string AVL::searchByName(const string &name) const // Check all nodes in the tre
     return "unsuccessful";
 }
 
-AVL::TreeNode* AVL::helperRemoveByID(TreeNode* helpRoot, int const id) // Determine if ID exists, remove it, and then balance the tree and update height
+AVL::TreeNode* AVL::helperRemoveByID(TreeNode* helpRoot, const string &id) // Determine if ID exists, remove it, and then balance the tree and update height
 {
     if (helpRoot == nullptr)
         return nullptr;
@@ -450,7 +448,7 @@ AVL::TreeNode* AVL::helperRemoveByID(TreeNode* helpRoot, int const id) // Determ
     return helpRoot;
 }
 
-string AVL::removeByID(int const id) // If ID exists, remove the ID
+string AVL::removeByID(const string &id) // If ID exists, remove the ID
 {
     if (searchByID(id) == "unsuccessful")
         return "unsuccessful";
@@ -464,7 +462,7 @@ string AVL::removeByID(int const id) // If ID exists, remove the ID
 
 string AVL::removeInOrder(int const n) // Remove a specified node and replace with inorder
 {
-    std::vector<int> const IDs = inOrder();
+    std::vector<string> const IDs = inOrder();
 
     if (n < 0 || n >= static_cast<int>(IDs.size()))
         return "unsuccessful";

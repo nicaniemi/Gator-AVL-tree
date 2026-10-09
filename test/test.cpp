@@ -1,11 +1,11 @@
 //#include <catch2/catch_test_macros.hpp>
 //#include <iostream>
-//
-// // uncomment and replace the following with your own headers
-//#include <algorithm>
+////
+//// uncomment and replace the following with your own headers
+////#include <algorithm>
 //
 //#include "AVL_header.h"
-//
+////
 //using namespace std;
 //
 // // the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
@@ -132,10 +132,10 @@
 //TEST_CASE("Deletion testing 2 children", "[deletion]")
 //{
 //	AVL tree;
-//	tree.insert("John", 20000000);
-//	tree.insert("Ally", 10000000);
-//	tree.insert("Bob", 30000000);
-//	REQUIRE(tree.removeByID(20000000) == "successful");
+//	tree.insert("John", "20000000");
+//	tree.insert("Ally", "10000000");
+//	tree.insert("Bob", "30000000");
+//	REQUIRE(tree.removeByID("20000000") == "successful");
 //	REQUIRE(tree.printInOrder() == "Ally, Bob");
 //}
 //
