@@ -35,10 +35,10 @@ AVL::TreeNode* AVL::rotateLeft(TreeNode* helpRoot) // Rotate left if the tree is
 
     int const leftHeightHelp = getHeight(helpRoot->left);
     int const rightHeightHelp = getHeight(helpRoot->right);
-    int const leftHeightNew = getHeight(newRoot->left);
-    int const rightHeightNew = getHeight(newRoot->right);
 
     helpRoot->height = max(leftHeightHelp, rightHeightHelp) + 1;
+    int const leftHeightNew = getHeight(newRoot->left);
+    int const rightHeightNew = getHeight(newRoot->right);
     newRoot->height = max(leftHeightNew, rightHeightNew) + 1;
 
     return newRoot;
@@ -56,10 +56,10 @@ AVL::TreeNode* AVL::rotateRight(TreeNode* helpRoot) // Rotate right if the tree 
 
     int const leftHeightHelp = getHeight(helpRoot->left);
     int const rightHeightHelp = getHeight(helpRoot->right);
-    int const leftHeightNew = getHeight(newRoot->left);
-    int const rightHeightNew = getHeight(newRoot->right);
 
     helpRoot->height = max(leftHeightHelp, rightHeightHelp) + 1;
+    int const leftHeightNew = getHeight(newRoot->left);
+    int const rightHeightNew = getHeight(newRoot->right);
     newRoot->height = max(leftHeightNew, rightHeightNew) + 1;
 
     return newRoot;

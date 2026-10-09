@@ -1,15 +1,15 @@
 //#include <catch2/catch_test_macros.hpp>
 //#include <iostream>
 //
-// uncomment and replace the following with your own headers
+// // uncomment and replace the following with your own headers
 //#include <algorithm>
 //
 //#include "AVL_header.h"
 //
 //using namespace std;
 //
-// the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
-
+// // the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
+//
 //TEST_CASE("Unsuccessful inserts", "[insertion]") // Test bad names/IDs to ensure regex works
 //{
 //	// instantiate any class members that you need to test here
@@ -137,6 +137,19 @@
 //	tree.insert("Bob", 30000000);
 //	REQUIRE(tree.removeByID(20000000) == "successful");
 //	REQUIRE(tree.printInOrder() == "Ally, Bob");
+//}
+//
+//TEST_CASE("PreOrder testing", "[preorder][Test 10]")
+//{
+//	AVL tree;
+//	tree.insert("Ally", 10000001);
+//	tree.insert("Bob", 10000002);
+//	tree.insert("Joe", 10000003);
+//	tree.insert("JJ", 10000004);
+//	tree.insert("Nic", 10000005);
+//	tree.insert("Nicolas", 10000006);
+//	tree.insert("Greg", 10000007);
+//	REQUIRE(tree.printPreOrder() == "JJ, Bob, Ally, Joe, Nicolas, Nic, Greg");
 //}
 //
 //TEST_CASE("Test 2", "[flag]"){
