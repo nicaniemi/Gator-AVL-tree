@@ -130,6 +130,9 @@ string AVL::insert(const string &name, int const id) // Insert a student into th
     if (!regex_match(idString, regex("^[0-9]{8}$"))) // Copilot helped me write this, I was unsure how to regex check for the ID
         return "unsuccessful";
 
+    if (helperSearchByID(this->root, id))
+        return "unsuccessful";
+
     this->root = helperInsert(this->root, name, id); // If valid, return that insertion was successful
     return "successful";
 }
